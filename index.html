@@ -1,34 +1,79 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promotion Pâques</title>
-    <link rel="stylesheet" href="style.css"> <!-- Pas de dossier css/ -->
-</head>
-<body>
-    <div class="container">
-        <h2>🎉 Promotion Spéciale de Pâques ! 🎉</h2>
-        <p class="intro">Après votre réservation, cliquez sur un œuf pour découvrir votre réduction surprise ! 🎁</p>
-        
-        <div class="eggs">
-            <div class="egg" id="egg1">🥚</div>
-            <div class="egg" id="egg2">🥚</div>
-            <div class="egg" id="egg3">🥚</div>
-            <div class="egg" id="egg4">🥚</div>
+<!-- Décorations flottantes de Pâques -->
+<div class="easter-decoration decoration-1">🌷</div>
+<div class="easter-decoration decoration-2">🐰</div>
+<div class="easter-decoration decoration-3">🥚</div>
+<div class="easter-decoration decoration-4">🐣</div>
+
+<div class="header">
+    <h1>✨ Offre Exceptionnelle de Pâques ✨</h1>
+</div>
+
+<div class="container">
+    <h2 class="floating">🥚 Chasse aux Œufs Zen 🥚</h2>
+    
+    <p class="intro-text">
+        Découvrez notre offre spéciale Pâques! Cassez un œuf virtuel pour révéler votre code promo et bénéficiez d'une remise exclusive sur votre massage que vous venez de réserver. Un moment de détente vous attend!
+    </p>
+    
+    <div class="eggs-container">
+        <div class="egg-container" onclick="breakEgg(this)">
+            <div class="egg whole-egg"></div>
+            <div class="egg cracked-egg">
+                <div class="half top-half"></div>
+                <div class="half bottom-half"></div>
+            </div>
+            <span class="letter">?</span>
+            <p class="egg-label">Œuf 1</p>
         </div>
-        
-        <p id="result"></p>
-
-        <p class="reminder">📢 Chaque lettre correspond à une remise mystère, révélée lors de votre passage au cabinet ! 🎁</p>
-
-        <p class="instruction" id="instruction" style="display: none;">
-            📸 Prenez une photo de votre lettre et montrez-la au cabinet pour bénéficier de votre réduction !
-        </p>
-
-        <button id="resetButton">🔄 Réinitialiser</button>
+        <div class="egg-container" onclick="breakEgg(this)">
+            <div class="egg whole-egg"></div>
+            <div class="egg cracked-egg">
+                <div class="half top-half"></div>
+                <div class="half bottom-half"></div>
+            </div>
+            <span class="letter">?</span>
+            <p class="egg-label">Œuf 2</p>
+        </div>
+        <div class="egg-container" onclick="breakEgg(this)">
+            <div class="egg whole-egg"></div>
+            <div class="egg cracked-egg">
+                <div class="half top-half"></div>
+                <div class="half bottom-half"></div>
+            </div>
+            <span class="letter">?</span>
+            <p class="egg-label">Œuf 3</p>
+        </div>
+        <div class="egg-container" onclick="breakEgg(this)">
+            <div class="egg whole-egg"></div>
+            <div class="egg cracked-egg">
+                <div class="half top-half"></div>
+                <div class="half bottom-half"></div>
+            </div>
+            <span class="letter">?</span>
+            <p class="egg-label">Œuf 4</p>
+        </div>
     </div>
-
-    <script src="script.js"></script> <!-- Pas de dossier java/ -->
-</body>
-</html>
+    
+    <div class="message-box" id="resultMessage">
+        <h3>Félicitations! Vous avez trouvé la lettre <span id="discoveredLetter">?</span></h3>
+        <p>Prenez une photo de cette page et présentez-la lors de votre prochaine visite chez Zen Attitude 59 pour bénéficier de votre remise exclusive !</p>
+        <p>Cette offre est personnelle et ne peut être utilisée qu'une seule fois.</p>
+    </div>
+    
+    <div class="instructions">
+        <h3 class="instructions-title">Comment ça marche?</h3>
+        <ol class="instructions-list">
+            <li>Choisissez un œuf et cliquez dessus pour le casser</li>
+            <li>Découvrez la lettre mystère qui apparaît</li>
+            <li>Prenez une capture d'écran ou une photo de votre résultat</li>
+            <li>Présentez cette capture lors de votre prochaine visite chez Zen Attitude 59</li>
+            <li>Bénéficiez de votre remise surprise !</li>
+        </ol>
+    </div>
+    
+    <p class="reminder">📢 Chaque lettre correspond à une remise mystère différente. Votre chance de relaxation vous attend !</p>
+    
+    <div class="footer">
+        <p>Offre valable jusqu'au 31 avril 2025. Une seule remise par client.</p>
+    </div>
+</div>
