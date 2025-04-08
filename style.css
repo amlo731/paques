@@ -1,6 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #fffcf2, #ffedd8);
+    /* Fond plus coloré avec un dégradé pastel */
+    background: linear-gradient(135deg, #ffe8f5, #fff0cc, #d9ffb3, #ccf5ff);
+    background-size: 400% 400%;
+    animation: gradient-bg 15s ease infinite;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -9,12 +12,18 @@ body {
     align-items: center;
 }
 
+@keyframes gradient-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .header {
-    background-color: #d47b00;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: white;
     padding: 20px;
     border-radius: 0 0 20px 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
     box-sizing: border-box;
@@ -30,10 +39,11 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 25px;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.2);
+    border: 3px dashed rgba(212, 123, 0, 0.3);
 }
 
 h2 {
@@ -77,16 +87,32 @@ h2 {
     transform: scale(1.05);
 }
 
-/* Oeuf entier */
+/* Oeuf entier - plus de variété de couleurs */
 .whole-egg {
     width: 100px;
     height: 130px;
-    background: radial-gradient(circle, #fff6e6, #ffe0ac);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     transition: opacity 0.3s ease;
     position: absolute;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f0c082;
+    border: 1px solid rgba(240, 192, 130, 0.5);
+}
+
+/* Attribuer une couleur unique à chaque œuf */
+.egg-container:nth-child(1) .whole-egg {
+    background: radial-gradient(circle, #ffdfef, #ff9ecd);
+}
+
+.egg-container:nth-child(2) .whole-egg {
+    background: radial-gradient(circle, #e0f7fa, #80deea);
+}
+
+.egg-container:nth-child(3) .whole-egg {
+    background: radial-gradient(circle, #e8f5e9, #a5d6a7);
+}
+
+.egg-container:nth-child(4) .whole-egg {
+    background: radial-gradient(circle, #fff9c4, #fff176);
 }
 
 /* Œuf cassé */
@@ -105,10 +131,26 @@ h2 {
     position: absolute;
     width: 100px;
     height: 65px;
-    background: radial-gradient(circle, #fff6e6, #ffe0ac);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     transition: transform 0.7s ease, opacity 0.3s ease;
-    border: 1px solid #f0c082;
+    border: 1px solid rgba(240, 192, 130, 0.5);
+}
+
+/* Appliquer les mêmes couleurs aux moitiés d'œufs */
+.egg-container:nth-child(1) .half {
+    background: radial-gradient(circle, #ffdfef, #ff9ecd);
+}
+
+.egg-container:nth-child(2) .half {
+    background: radial-gradient(circle, #e0f7fa, #80deea);
+}
+
+.egg-container:nth-child(3) .half {
+    background: radial-gradient(circle, #e8f5e9, #a5d6a7);
+}
+
+.egg-container:nth-child(4) .half {
+    background: radial-gradient(circle, #fff9c4, #fff176);
 }
 
 .top-half {
@@ -121,16 +163,38 @@ h2 {
     clip-path: polygon(0% 0%, 50% 20%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+/* Ajouter un effet de paillettes sur les œufs au survol */
+.egg-container:hover .whole-egg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.7) 3px, transparent 3px),
+        radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.6) 2px, transparent 2px),
+        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+    background-size: 100px 130px;
+}
+
+/* Lettres plus colorées */
 .letter {
     position: absolute;
-    font-size: 36px;
+    font-size: 40px;
     font-weight: bold;
-    color: #e74c3c;
+    text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 5;
 }
+
+.egg-container:nth-child(1) .letter { color: #ff4081; }
+.egg-container:nth-child(2) .letter { color: #00bcd4; }
+.egg-container:nth-child(3) .letter { color: #4caf50; }
+.egg-container:nth-child(4) .letter { color: #ffc107; }
 
 .egg-label {
     position: absolute;
@@ -166,23 +230,24 @@ h2 {
 }
 
 .reminder {
-    background-color: #f8eddc;
+    background: linear-gradient(to right, #fff9c4, #ffecb3);
     padding: 15px;
     border-radius: 10px;
     margin-top: 20px;
     text-align: center;
     font-size: 1.1em;
     color: #333;
-    border-left: 5px solid #d47b00;
+    border-left: 5px solid #ffc107;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 .instructions {
     margin: 30px 0;
     padding: 15px;
-    background-color: #f0f8ff;
+    background-color: #e3f2fd;
     border-radius: 10px;
-    border-left: 5px solid #4a96d3;
+    border-left: 5px solid #90caf9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .instructions-title {
@@ -203,44 +268,50 @@ h2 {
     font-size: 0.9em;
 }
 
-/* Animations */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.floating {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Décorations de Pâques */
-.easter-decoration {
-    position: absolute;
-    font-size: 2em;
-    opacity: 0.6;
-    z-index: -1;
-}
-
-.decoration-1 { top: 10%; left: 5%; }
-.decoration-2 { top: 15%; right: 7%; }
-.decoration-3 { bottom: 20%; left: 8%; }
-.decoration-4 { bottom: 25%; right: 6%; }
-
+/* Message box */
 .message-box {
     display: none;
     padding: 20px;
-    background-color: #f9f3e9;
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
     border-radius: 10px;
     margin: 20px 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: #333;
+    border: 2px solid #4caf50;
 }
 
 .message-box h3 {
     margin-top: 0;
-    color: #d47b00;
+    color: #2e7d32;
+}
+
+/* Plus de décorations de Pâques */
+.easter-decoration {
+    position: absolute;
+    font-size: 2.5em;
+    opacity: 0.8;
+    z-index: -1;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1));
+    animation: float 4s ease-in-out infinite;
+}
+
+.decoration-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.decoration-2 { top: 15%; right: 7%; animation-delay: 1s; }
+.decoration-3 { bottom: 20%; left: 8%; animation-delay: 2s; }
+.decoration-4 { bottom: 25%; right: 6%; animation-delay: 3s; }
+.decoration-5 { top: 40%; left: 12%; animation-delay: 1.5s; }
+.decoration-6 { top: 60%; right: 10%; animation-delay: 2.5s; }
+
+/* Animation plus prononcée */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
 }
 
 .confetti {
