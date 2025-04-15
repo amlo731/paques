@@ -15,9 +15,9 @@ function weightedRandom(options) {
 
 // Options de lettres avec leurs poids respectifs
 const letterOptions = [
-    { value: "A", weight: 30 }, // 30% de chance
-    { value: "B", weight: 30 }, // 30% de chance
-    { value: "C", weight: 30 }, // 30% de chance
+    { value: "A", weight: 35 }, // 35% de chance
+    { value: "B", weight: 35 }, // 35% de chance
+    { value: "C", weight: 20 }, // 20% de chance
     { value: "D", weight: 10 }  // 10% de chance - plus rare
 ];
 
