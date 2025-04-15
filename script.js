@@ -1,3 +1,26 @@
+// Fonction pour obtenir une lettre aléatoire avec système de poids
+function weightedRandom(options) {
+    const weights = options.map(option => option.weight);
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    const randomValue = Math.random() * totalWeight;
+    
+    let weightSum = 0;
+    for (let i = 0; i < options.length; i++) {
+        weightSum += options[i].weight;
+        if (randomValue <= weightSum) {
+            return options[i].value;
+        }
+    }
+}
+
+// Options de lettres avec leurs poids respectifs
+const letterOptions = [
+    { value: "A", weight: 30 }, // 30% de chance
+    { value: "B", weight: 30 }, // 30% de chance
+    { value: "C", weight: 30 }, // 30% de chance
+    { value: "D", weight: 10 }  // 10% de chance - plus rare
+];
+
 // Vérifier si le jeu a déjà été joué
 window.onload = function() {
     if (localStorage.getItem('easterEggPlayed')) {
@@ -40,9 +63,8 @@ function breakEgg(element) {
     element.classList.add("cracked");
     gameOver = true; // Bloque les autres œufs
     
-    // Attribution d'une lettre aléatoire
-    const letters = ["A", "B", "C", "D"];
-    let randomLetter = letters[Math.floor(Math.random() * letters.length)];
+    // Attribution d'une lettre avec système de poids
+    let randomLetter = weightedRandom(letterOptions);
     element.querySelector(".letter").textContent = randomLetter;
     
     // Sauvegarder dans localStorage
@@ -74,8 +96,6 @@ function breakEgg(element) {
         createConfetti();
     }, 1000);
 }
-
-// La fonction showAlreadyPlayedMessage n'est plus nécessaire
 
 function createConfetti() {
     const colors = ['#f94144', '#f3722c', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b', '#577590'];
